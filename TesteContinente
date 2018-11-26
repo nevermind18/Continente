@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class TesteContinente {
+    public static void main(String[] args) {
+        ArrayList<String> continentes = new ArrayList<>();
+        Continentes c = new Continentes();
+        Scanner s = new Scanner(System.in);
+        int opcao = 0;
+        do {
+            opcao = s.nextInt();
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite o nome do continente");
+                    String nome = s.next();
+                    String op = "";
+                    c.cadastarContinente(nome);
+                    do {
+                        System.out.println("Digite o nome do pais");
+                        String nomePais = s.next();
+                        System.out.println("Digite a quantidade de habtantes");
+                        int população = s.nextInt();
+                        c.cadastrarPais(nomePais, população);
+                        System.out.println("deseja inserir um novo pais");
+                        op = s.next();
+                    } while (op.equalsIgnoreCase("s"));
+                    continentes.add(c.toString());
+                    break;
+                case 2:
+                    for (int i = 0; i < continentes.size(); i++) {
+                        System.out.println(continentes.get(i));
+                    }
+                    break;
+                case 3:
+                    System.out.println(c.mostrarMaiorPopulacao());
+                    break;
+                case 4:
+                    System.out.println(c.mostrarMenorPopulacao());
+                    break;
+                case 5:
+                    System.out.println(c.populacaoTotal());
+                    break;
+            }
+        } while (opcao != 0);
+    }
+}
