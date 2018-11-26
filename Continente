@@ -1,0 +1,80 @@
+
+import java.util.ArrayList;
+
+public class Continentes {
+
+    private String nome;
+    
+    ArrayList<Paises> pais = new ArrayList<>();
+
+    public Continentes() {
+
+    }
+
+    public Continentes(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void cadastarContinente(String nome) {
+        this.nome = nome;
+
+    }
+
+    public void cadastrarPais(String nomePais, int populacao) {
+        Paises p = new Paises();
+        ArrayList<Paises> paises = new ArrayList<>();
+        p.setNome(nomePais);
+        p.setPopulacao(populacao);
+        paises.add(p);
+        pais.addAll(paises);
+    }
+
+    public String mostrarMaiorPopulacao() {
+        String nome = pais.get(0).getNome();
+        int maior = pais.get(0).getPopulacao();
+        for (int i = 1; i < pais.size(); i++) {
+
+            if (maior < pais.get(i).getPopulacao()) {
+                nome = pais.get(i).getNome();
+                maior = pais.get(i).getPopulacao();
+            }
+        }
+        return nome;
+    }
+
+    public int populacaoTotal() {
+        int total = 0;
+        for (int i = 0; i < pais.size(); i++) {
+            total += pais.get(i).getPopulacao();
+        }
+
+        return total;
+    }
+
+    public String mostrarMenorPopulacao() {
+        String nome = pais.get(0).getNome();
+        int menor = pais.get(0).getPopulacao();
+        for (int i = 1; i < pais.size(); i++) {
+            if (menor > pais.get(i).getPopulacao()) {
+                nome = pais.get(i).getNome();
+                menor = pais.get(i).getPopulacao();
+            }
+        }
+        return nome;
+    }
+
+    @Override
+    public String toString() {
+        return "nome = " + nome
+                + "\npaises = " + pais;
+    }
+
+}
