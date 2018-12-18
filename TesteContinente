@@ -1,15 +1,27 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class TesteContinente {
+
     public static void main(String[] args) {
-        ArrayList<String> continentes = new ArrayList<>();
-        Continentes c = new Continentes();
+
+        ArrayList<Continentes> continentes = new ArrayList<>();
+
         Scanner s = new Scanner(System.in);
+
         int opcao = 0;
         do {
+            System.out.println("1 - cadastrar um continente e seus paises \n"
+                    + "2 - para verificar os continentes cadastrados \n"
+                    + "3 - para ver o pais com a maior populaçõa \n"
+                    + "4 - para ver o pais com a menor populaçõa \n"
+                    + "5 - para ver a populaçõa total do continente \n"
+                    + "0 - para sair");
             opcao = s.nextInt();
             switch (opcao) {
+
                 case 1:
+                    Continentes c = new Continentes();
                     System.out.println("Digite o nome do continente");
                     String nome = s.next();
                     String op = "";
@@ -23,7 +35,7 @@ public class TesteContinente {
                         System.out.println("deseja inserir um novo pais");
                         op = s.next();
                     } while (op.equalsIgnoreCase("s"));
-                    continentes.add(c.toString());
+                    continentes.add(c);
                     break;
                 case 2:
                     for (int i = 0; i < continentes.size(); i++) {
@@ -31,15 +43,25 @@ public class TesteContinente {
                     }
                     break;
                 case 3:
-                    System.out.println(c.mostrarMaiorPopulacao());
+                    for (int i = 0; i < continentes.size(); i++) {
+                        System.out.println(continentes.get(i).mostrarMaiorPopulacao());
+                    }
                     break;
                 case 4:
-                    System.out.println(c.mostrarMenorPopulacao());
+                    for (int i = 0; i < continentes.size(); i++) {
+                        System.out.println(continentes.get(i).mostrarMenorPopulacao());
+                    }
                     break;
                 case 5:
-                    System.out.println(c.populacaoTotal());
+                    for (int i = 0; i < continentes.size(); i++) {
+                        System.out.println(continentes.get(i).populacaoTotal());
+                    }
                     break;
+
             }
+
         } while (opcao != 0);
+
     }
+
 }
